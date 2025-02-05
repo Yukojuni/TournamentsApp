@@ -35,6 +35,16 @@ class User implements UserInterface, PasswordAuthenticatedUserInterface
     #[ORM\Column]
     private ?string $password = null;
 
+    #[ORM\Column(length: 50)]
+    private ?string $firstname = null;
+
+    #[ORM\Column(length: 50)]
+    private ?string $lastname = null;
+
+    #[ORM\Column(type: 'date', nullable: true)]
+    private ?\DateTimeInterface $birthdate = null;
+
+
     /**
      * @var Collection<int, Teams>
      */
@@ -63,6 +73,42 @@ class User implements UserInterface, PasswordAuthenticatedUserInterface
     {
         $this->email = $email;
 
+        return $this;
+    }
+
+    public function getFirstName(): ?string
+    {
+        return $this->firstname;
+    }
+
+    public function setFirstName(string $firstname): static
+    {
+        $this->firstname = $firstname;
+
+        return $this;
+    }
+
+    public function getLastName(): ?string
+    {
+        return $this->lastname;
+    }
+
+    public function setLastName(string $lastname): static
+    {
+        $this->lastname = $lastname;
+
+        return $this;
+    }
+
+    public function getBirthdate(): ?\DateTimeInterface
+    {
+        return $this->birthdate;
+    }
+
+    public function setBirthdate(?\DateTimeInterface $birthdate): static
+    {
+        $this->birthdate = $birthdate;
+        
         return $this;
     }
 

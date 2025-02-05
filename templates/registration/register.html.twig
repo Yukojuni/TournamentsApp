@@ -1,23 +1,47 @@
 {% extends 'base.html.twig' %}
 
-{% block title %}Register{% endblock %}
+{% block title %}Inscription - Miss France{% endblock %}
 
 {% block body %}
-    {% for flash_error in app.flashes('verify_email_error') %}
-        <div class="alert alert-danger" role="alert">{{ flash_error }}</div>
-    {% endfor %}
+    <div class="register-container">
+        {% for flash_error in app.flashes('verify_email_error') %}
+            <div class="alert alert-danger" role="alert">{{ flash_error }}</div>
+        {% endfor %}
 
-    <h1>Register</h1>
+        <h1 class="title">Rejoignez l'Expérience Miss France</h1>
+        <p class="subtitle">Inscrivez-vous pour tenter votre chance et vivre une aventure unique !</p>
 
-    {{ form_errors(registrationForm) }}
+        <div class="form-container">
+            {{ form_start(registrationForm) }}
 
-    {{ form_start(registrationForm) }}
-        {{ form_row(registrationForm.email) }}
-        {{ form_row(registrationForm.plainPassword, {
-            label: 'Password'
-        }) }}
-        {{ form_row(registrationForm.agreeTerms) }}
+            <div class="form-group">
+                {{ form_row(registrationForm.firstname, {'attr': {'placeholder': 'Prénom'}}) }}
+            </div>
 
-        <button type="submit" class="btn">Register</button>
-    {{ form_end(registrationForm) }}
+            <div class="form-group">
+                {{ form_row(registrationForm.lastname, {'attr': {'placeholder': 'Nom'}}) }}
+            </div>
+
+            <div class="form-group">
+                {{ form_row(registrationForm.birthdate, {'attr': {'placeholder': 'Date de naissance'}}) }}
+            </div>
+
+            <div class="form-group">
+                {{ form_row(registrationForm.email, {'attr': {'placeholder': 'Adresse e-mail'}}) }}
+            </div>
+
+            <div class="form-group">
+                {{ form_row(registrationForm.plainPassword, {'attr': {'placeholder': 'Mot de passe'}, 'label': 'Mot de passe'}) }}
+            </div>
+
+            <div class="form-group">
+                {{ form_row(registrationForm.agreeTerms) }}
+            </div>
+
+            <button type="submit" class="btn-register">S'inscrire</button>
+
+            {{ form_end(registrationForm) }}
+        </div>
+    </div>
 {% endblock %}
+

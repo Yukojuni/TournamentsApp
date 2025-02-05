@@ -91,6 +91,75 @@ h1.title {
     transform: scale(1.05);
 }
 
+/* ----- FORMULAIRE D'INSCRIPTION ----- */
+.register-container {
+    max-width: 500px;
+    margin: 50px auto;
+    background: rgba(255, 255, 255, 0.9);
+    padding: 30px;
+    border-radius: 15px;
+    box-shadow: 0px 4px 15px rgba(0, 0, 0, 0.2);
+    text-align: center;
+}
+
+.register-container h1 {
+    font-size: 28px;
+    font-weight: bold;
+    margin-bottom: 10px;
+    color: #D4AF37;
+}
+
+.register-container p {
+    font-size: 16px;
+    margin-bottom: 20px;
+    color: #6C6C6C;
+}
+
+.form-container {
+    display: flex;
+    flex-direction: column;
+    gap: 15px;
+}
+
+.form-group {
+    margin-bottom: 15px;
+}
+
+input {
+    width: 100%;
+    padding: 12px;
+    border: 1px solid #ccc;
+    border-radius: 8px;
+    font-size: 16px;
+    background: rgba(255, 255, 255, 0.9);
+    color: #333;
+}
+
+input:focus {
+    border-color: #D4AF37;
+    outline: none;
+    box-shadow: 0 0 8px rgba(212, 175, 55, 0.5);
+}
+
+/* Bouton d'inscription */
+.btn-register {
+    background: linear-gradient(to right, #D4AF37, #B88E6E);
+    color: white;
+    font-size: 18px;
+    font-weight: bold;
+    padding: 12px;
+    border: none;
+    border-radius: 30px;
+    cursor: pointer;
+    transition: 0.3s ease-in-out;
+    width: 100%;
+}
+
+.btn-register:hover {
+    background: linear-gradient(to right, #B88E6E, #D4AF37);
+    transform: scale(1.05);
+}
+
 /* Responsive Design */
 @media (max-width: 768px) {
     .landing {
@@ -113,4 +182,96 @@ h1.title {
         flex-direction: column;
         align-items: center;
     }
+
+    .register-container {
+        width: 90%;
+        padding: 20px;
+    }
 }
+
+/* Conteneur principal */
+.login-container {
+    max-width: 500px;
+    margin: 50px auto;
+    background: rgba(255, 255, 255, 0.9);
+    padding: 30px;
+    border-radius: 15px;
+    box-shadow: 0px 4px 15px rgba(0, 0, 0, 0.2);
+    text-align: center;
+}
+
+.title {
+    font-size: 28px;
+    font-weight: bold;
+    margin-bottom: 10px;
+    color: #D4AF37; /* Or pâle */
+}
+
+.subtitle {
+    font-size: 16px;
+    margin-bottom: 20px;
+    color: #6C6C6C;
+}
+
+.form-container {
+    display: flex;
+    flex-direction: column;
+    gap: 15px;
+}
+
+.form-group {
+    margin-bottom: 15px;
+}
+
+/* Champs de formulaire */
+input {
+    width: 100%;
+    padding: 12px;
+    border: 1px solid #ccc;
+    border-radius: 8px;
+    font-size: 16px;
+    background: rgba(255, 255, 255, 0.9);
+    color: #333;
+}
+
+input:focus {
+    border-color: #D4AF37;
+    outline: none;
+    box-shadow: 0 0 8px rgba(212, 175, 55, 0.5);
+}
+
+/* Bouton de connexion */
+.btn-primary {
+    background-color: #D4AF37;
+    border: none;
+    color: white;
+    font-size: 18px;
+    font-weight: bold;
+    padding: 12px;
+    border-radius: 30px;
+    cursor: pointer;
+    transition: 0.3s ease-in-out;
+    width: 100%;
+}
+
+.btn-primary:hover {
+    background-color: #B88E6E;
+    transform: scale(1.05);
+}
+
+/* Responsive Design */
+@media (max-width: 768px) {
+    .login-container {
+        width: 90%;
+        padding: 20px;
+    }
+
+    .title {
+        font-size: 2.5em;
+    }
+
+    .subtitle {
+        font-size: 1.2em;
+    }
+}
+
