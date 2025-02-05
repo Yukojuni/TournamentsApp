@@ -1,0 +1,13 @@
+{% extends 'base.html.twig' %}
+
+{% block body %}
+    <h2>Liste des Tournois</h2>
+    {% for tournament in tournaments %}
+        <div class="tournament-card">
+            <h3>{{ tournament.name }}</h3>
+            <p>{{ tournament.description }}</p>
+            <p>Status : {{ tournament.status }}</p>
+            <a href="{{ path('app_tournament_show', {id: tournament.id}) }}" class="btn btn-primary">Détails</a>
+        </div>
+    {% endfor %}
+{% endblock %}

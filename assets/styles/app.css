@@ -1,3 +1,116 @@
+/* Général */
 body {
-    background-color: skyblue;
+    font-family: 'Lato', sans-serif;
+    background-color: #F9F9F9;  /* Blanc cassé */
+    color: #333333;  /* Gris foncé */
+    margin: 0;
+    padding: 0;
+    line-height: 1.6;
+}
+
+/* Conteneur principal */
+.landing {
+    text-align: center;
+    padding: 50px 20px;
+    margin-top: 50px;
+}
+
+/* Logo */
+.logo-container {
+    margin-bottom: 30px;
+}
+
+.logo {
+    width: 200px;
+    margin-bottom: 20px;
+}
+
+/* Titre principal */
+h1.title {
+    font-family: 'Playfair Display', serif;
+    font-size: 4.5em;
+    font-weight: bold;
+    color: #D4AF37; /* Or pâle */
+    text-shadow: 2px 2px 8px rgba(0, 0, 0, 0.3);
+    margin-bottom: 20px;
+}
+
+/* Introduction */
+.intro-text {
+    font-size: 1.4em;
+    color: #6C6C6C; /* Gris doux */
+    margin-bottom: 20px;
+    max-width: 800px;
+    margin-left: auto;
+    margin-right: auto;
+}
+
+.cta-text {
+    font-size: 1.2em;
+    color: #B88E6E; /* Doré clair */
+    margin-bottom: 30px;
+}
+
+/* Boutons */
+.cta-buttons {
+    display: flex;
+    justify-content: center;
+    gap: 30px;
+    margin-top: 50px;
+}
+
+.btn {
+    padding: 15px 30px;
+    font-size: 1.1em;
+    text-transform: uppercase;
+    border-radius: 50px;
+    box-shadow: 0 6px 12px rgba(0, 0, 0, 0.2);
+    transition: background-color 0.3s ease, transform 0.2s ease;
+    font-family: 'Lato', sans-serif;
+}
+
+.btn-primary {
+    background-color: #D4AF37; /* Or pâle */
+    border: none;
+    color: white;
+}
+
+.btn-primary:hover {
+    background-color: #B78629;
+    transform: scale(1.05);
+}
+
+.btn-secondary {
+    background-color: #3E4A64; /* Bleu foncé */
+    border: none;
+    color: white;
+}
+
+.btn-secondary:hover {
+    background-color: #2A3644;
+    transform: scale(1.05);
+}
+
+/* Responsive Design */
+@media (max-width: 768px) {
+    .landing {
+        padding: 20px;
+    }
+
+    h1.title {
+        font-size: 3em;
+    }
+
+    .intro-text {
+        font-size: 1.1em;
+    }
+
+    .cta-text {
+        font-size: 1em;
+    }
+
+    .cta-buttons {
+        flex-direction: column;
+        align-items: center;
+    }
 }

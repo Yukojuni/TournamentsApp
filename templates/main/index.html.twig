@@ -1,0 +1,29 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}Concours Miss France{% endblock %}
+
+{% block body %}
+    <div class="landing">
+        <header>
+            <div class="logo-container">
+                <img src="{{ asset('images/logo.png') }}" alt="Logo du Concours Miss France" class="logo">
+                <h1 class="title">Concours Miss France</h1>
+            </div>
+        </header>
+
+        <section class="intro">
+            <p class="intro-text">
+                Bienvenue dans l'univers du concours Miss France, où la beauté, l'élégance et la grâce se rencontrent.
+                Inscrivez-vous pour participer à cette aventure et accédez à un monde de raffinement.
+            </p>
+            <p class="cta-text">
+                Rejoignez dès maintenant les candidates et défiez les reines de la beauté dans une compétition à la hauteur de vos ambitions !
+            </p>
+        </section>
+
+        <div class="cta-buttons">
+            <a href="{{ path('app_register') }}" class="btn btn-primary">S'inscrire</a>
+            <a href="{{ path('app_login') }}" class="btn btn-secondary">Se connecter</a>
+        </div>
+    </div>
+{% endblock %}
