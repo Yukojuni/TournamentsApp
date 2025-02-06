@@ -6,50 +6,58 @@ use EasyCorp\Bundle\EasyAdminBundle\Attribute\AdminDashboard;
 use EasyCorp\Bundle\EasyAdminBundle\Config\Dashboard;
 use EasyCorp\Bundle\EasyAdminBundle\Config\MenuItem;
 use EasyCorp\Bundle\EasyAdminBundle\Controller\AbstractDashboardController;
+use Symfony\Bundle\SecurityBundle\Security;
 use Symfony\Component\HttpFoundation\Response;
+use Symfony\Component\Routing\Attribute\Route;
+use App\Controller\Admin\UserCrudController;
+use EasyCorp\Bundle\EasyAdminBundle\Router\AdminUrlGenerator;
+use App\Entity\User;
+use App\Entity\Tournaments;
+use App\Entity\Teams;
+use App\Entity\Matches;
+
 
 class DashboardController extends AbstractDashboardController
 {
-    #[Route(path: '/admin', name: 'admin')]
-    // #[IsGranted(attribute: 'ROLE_ADMIN')]
+    private AdminUrlGenerator $adminUrlGenerator;
+    private Security $security;
 
+    public function __construct(AdminUrlGenerator $adminUrlGenerator, Security $security)
+    {
+        $this->adminUrlGenerator = $adminUrlGenerator;
+        $this->security = $security;
+    }
 
+    #[Route('/admin', name: 'admin')]
     public function index(): Response
     {
-        // $adminUrlGenerator = $this->container->get(id: AdminUrlGenerator::class);
-        // return $this->redirect(url: $adminUrlGenerator->setController())
-        return parent::index();
+        // Vérifie si l'utilisateur est admin
+        if (!$this->security->isGranted('ROLE_ADMIN')) {
+            return $this->redirectToRoute('app_home');
+        }
 
-        // Option 1. You can make your dashboard redirect to some common page of your backend
-        //
-        // 1.1) If you have enabled the "pretty URLs" feature:
-        // return $this->redirectToRoute('admin_user_index');
-        //
-        // 1.2) Same example but using the "ugly URLs" that were used in previous EasyAdmin versions:
-        // $adminUrlGenerator = $this->container->get(AdminUrlGenerator::class);
-        // return $this->redirect($adminUrlGenerator->setController(OneOfYourCrudController::class)->generateUrl());
-
-        // Option 2. You can make your dashboard redirect to different pages depending on the user
-        //
-        // if ('jane' === $this->getUser()->getUsername()) {
-        //     return $this->redirectToRoute('...');
-        // }
-
-        // Option 3. You can render some custom template to display a proper dashboard with widgets, etc.
-        // (tip: it's easier if your template extends from @EasyAdmin/page/content.html.twig)
-        //
-        // return $this->render('some/path/my-dashboard.html.twig');
+        $url = $this->adminUrlGenerator->setController(UserCrudController::class)->generateUrl();
+        return $this->redirect($url);
     }
 
     public function configureDashboard(): Dashboard
     {
         return Dashboard::new()
-            ->setTitle('Tournoi');
+            ->setTitle('Panel Admin - Tournoi');
     }
 
     public function configureMenuItems(): iterable
     {
-        yield MenuItem::linkToDashboard('Dashboard', 'fa fa-home');
-        // yield MenuItem::linkToCrud('The Label', 'fas fa-list', EntityClass::class);
+        return [
+            MenuItem::linkToDashboard('Tableau de bord', 'fa fa-home'),
+            MenuItem::section('Gestion du site'),
+            MenuItem::linkToCrud('Utilisateurs', 'fas fa-users', User::class),
+            MenuItem::linkToCrud('Tournois', 'fas fa-trophy', Tournaments::class),
+            MenuItem::linkToCrud('Équipes', 'fas fa-users-cog', Teams::class),
+            MenuItem::linkToCrud('Matchs', 'fas fa-futbol', Matches::class),
+            MenuItem::section('Autres'),
+            MenuItem::linkToRoute('Retour au site', 'fas fa-arrow-left', 'app_home'),
+            MenuItem::linkToLogout('Déconnexion', 'fas fa-sign-out-alt'),
+        ];
     }
 }

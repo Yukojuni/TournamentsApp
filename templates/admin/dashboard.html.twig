@@ -1,0 +1,23 @@
+{% extends '@EasyAdmin/page/content.html.twig' %}
+
+{% block content %}
+    <div class="admin-dashboard">
+        <h1 class="title">Panel Administrateur</h1>
+        <p class="subtitle">Bienvenue dans le back-office du tournoi Miss France.</p>
+
+        <div class="dashboard-cards">
+            <a href="{{ path('admin_user_index') }}" class="dashboard-card">
+                <i class="fas fa-users"></i>
+                <span>Gérer les Utilisateurs</span>
+            </a>
+            <a href="{{ path('admin_tournoi_index') }}" class="dashboard-card">
+                <i class="fas fa-trophy"></i>
+                <span>Gérer les Tournois</span>
+            </a>
+            <a href="{{ path('admin_equipe_index') }}" class="dashboard-card">
+                <i class="fas fa-users-cog"></i>
+                <span>Gérer les Équipes</span>
+            </a>
+        </div>
+    </div>
+{% endblock %}
