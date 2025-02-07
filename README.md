@@ -41,7 +41,7 @@ Clonez le repository
 bash
 Copier
 Modifier
-git clone https://github.com/votre-compte/ymmersion-symfony.git
+git clone https://github.com/votre-compte/ymmersion-symfony.git](https://github.com/Yukojuni/TournamentsApp.git
 cd ymmersion-symfony
 Installez les dépendances via Composer
 
