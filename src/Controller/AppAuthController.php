@@ -14,9 +14,12 @@ class AppAuthController extends AbstractController
     {
         // get the login error if there is one
         $error = $authenticationUtils->getLastAuthenticationError();
-
         // last username entered by the user    
         $lastUsername = $authenticationUtils->getLastUsername();
+
+        if ($this->getUser()) {
+            return $this->redirectToRoute('app_tournaments');
+        }
 
         return $this->render('appauth/login.html.twig', [
             'last_username' => $lastUsername,

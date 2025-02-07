@@ -1,13 +1,16 @@
 {% extends 'base.html.twig' %}
 
 {% block body %}
+<div class="container">
     <h2>Liste des Tournois</h2>
     {% for tournament in tournaments %}
         <div class="tournament-card">
             <h3>{{ tournament.name }}</h3>
             <p>{{ tournament.description }}</p>
-            <p>Status : {{ tournament.status }}</p>
-            <a href="{{ path('app_tournament_show', {id: tournament.id}) }}" class="btn btn-primary">Détails</a>
+            <p class="status {% if tournament.status == 'Ouvert' %}open{% elseif tournament.status == 'Fermé' %}closed{% else %}ongoing{% endif %}">
+                Statut : {{ tournament.status }}
+            </p>
         </div>
     {% endfor %}
+</div>
 {% endblock %}
