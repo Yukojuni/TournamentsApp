@@ -1,0 +1,41 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}Créer une équipe{% endblock %}
+
+{% block body %}
+<div class="container">
+    <h2>Créer une équipe</h2>
+
+    {# Formulaire pour créer une équipe #}
+    <form action="{{ path('app_team') }}" method="POST">
+        <div class="form-group">
+            <label for="team_name">Nom de l'équipe</label>
+            <input type="text" name="team_name" id="team_name" required class="form-control">
+        </div>
+
+        <div class="form-group">
+            <label for="tournament_id">Choisir un tournoi</label>
+            <select name="tournament_id" id="tournament_id" class="form-control">
+                {% for tournament in tournaments %}
+                    <option value="{{ tournament.id }}">{{ tournament.name }}</option>
+                {% endfor %}
+            </select>
+        </div>
+
+        <button type="submit" class="btn btn-primary">Créer l'équipe</button>
+    </form>
+
+    <hr>
+
+    {# Liste des équipes créées par l'utilisateur connecté #}
+    <h3>Mes équipes</h3>
+    {% for team in teams %}
+        <div class="team-card">
+            <h4>{{ team.name }}</h4>
+            <p>Inscrite au tournoi: {{ team.tournament.name }}</p>
+        </div>
+    {% else %}
+        <p>Vous n'avez pas encore créé d'équipe.</p>
+    {% endfor %}
+</div>
+{% endblock %}
