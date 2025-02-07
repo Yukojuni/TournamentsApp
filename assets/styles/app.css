@@ -1,4 +1,4 @@
-/* ----- Styles généraux ----- */
+/* Général */
 body {
     font-family: 'Lato', sans-serif;
     background-color: #F9F9F9;
@@ -8,24 +8,201 @@ body {
     line-height: 1.6;
 }
 
+/* Navbar */
+.navbar {
+    background-color: #222;
+    padding: 1px;
+    display: flex;
+    justify-content: center;
+}
+.logo {
+    color: white;
+    font-size: 24px;
+    text-decoration: none;
+    font-weight: bold;
+}
+
+.nav-links {
+    list-style: none;
+    display: flex;
+    gap: 15px;
+}
+
+.nav-links li {
+    display: inline;
+}
+
+.nav-links a {
+    color: white;
+    text-decoration: none;
+    padding: 5px;
+}
+
+.nav-links a:hover {
+    background-color: #444;
+    border-radius: 5px;
+}
+
+.btn-logout {
+    background-color: red;
+    padding: 8px 12px;
+    border-radius: 5px;
+}
+
+.btn-logout:hover {
+    background-color: darkred;
+}
+
+
 /* ----- Conteneur principal ----- */
-.container {
+.landing, .login-container, .register-container, .container {
+    width: 100%;
     max-width: 1200px;
     margin: 50px auto;
     padding: 20px;
 }
 
-/* ----- Titre principal ----- */
-h2 {
-    font-size: 2.5em;
-    color: #D4AF37;
-    text-align: center;
+/* Logo */
+.logo-container {
     margin-bottom: 30px;
-    text-transform: uppercase;
-    text-shadow: 2px 2px 10px rgba(0, 0, 0, 0.2);
 }
 
-/* ----- Cartes de tournois ----- */
+.logo {
+    width: 200px;
+    margin-bottom: 20px;
+}
+
+/* Titre principal */
+h1.title, h2, .login-container h1, .register-container h1 {
+    font-family: 'Playfair Display', serif;
+    font-size: 4.5em;
+    font-weight: bold;
+    color: #D4AF37;
+    text-shadow: 2px 2px 8px rgba(0, 0, 0, 0.3);
+    margin-bottom: 20px;
+    text-align: center;
+}
+
+h2 {
+    font-size: 2.5em;
+    text-transform: uppercase;
+}
+
+h3 {
+    font-size: 1.8em;
+    color: #3E4A64;
+    margin-bottom: 10px;
+}
+
+/* Introduction */
+.intro-text, .cta-text, .subtitle {
+    font-size: 1.2em;
+    color: #6C6C6C;
+    margin-bottom: 20px;
+    text-align: center;
+}
+
+/* Boutons principaux */
+.cta-buttons {
+    display: flex;
+    justify-content: center;  /* Centrer les boutons horizontalement */
+    gap: 30px;
+    margin-top: 50px;
+}
+
+.cta-buttons a {
+    display: inline-flex;  /* Utiliser flexbox pour centrer le contenu */
+    justify-content: center;  /* Centrer le texte à l'intérieur du bouton */
+    align-items: center;  /* Centrer verticalement */
+    padding: 15px 30px;
+    font-size: 1.1em;
+    text-transform: uppercase;
+    border-radius: 50px;
+    box-shadow: 0 6px 12px rgba(0, 0, 0, 0.2);
+    transition: background-color 0.3s ease, transform 0.2s ease;
+    font-family: 'Lato', sans-serif;
+    text-decoration: none; /* Supprimer le soulignement des liens */
+    width: 200px; /* Fixer une largeur fixe pour les deux boutons */
+    height: 50px; /* Fixer une hauteur pour uniformiser les boutons */
+    text-align: center;  /* Centrer le texte à l'intérieur */
+}
+
+.cta-buttons a span {
+    display: inline-block;
+    text-align: center;  /* Centrer le texte dans chaque bouton */
+}
+
+
+/* Boutons */
+.btn-primary {
+    background-color: #D4AF37;
+    border: none;
+    color: white;
+}
+
+.btn-primary:hover {
+    background-color: #B78629;
+    transform: scale(1.05);
+}
+
+.btn-secondary {
+    background-color: #3E4A64;
+    border: none;
+    color: white;
+}
+
+.btn-secondary:hover {
+    background-color: #2A3644;
+    transform: scale(1.05);
+}
+
+/* Formulaires */
+.form-container {
+    display: flex;
+    flex-direction: column;
+    gap: 15px;
+}
+
+.form-group {
+    margin-bottom: 15px;
+}
+
+input {
+    width: 100%;
+    padding: 12px;
+    border: 1px solid #ccc;
+    border-radius: 8px;
+    font-size: 16px;
+    background: rgba(255, 255, 255, 0.9);
+    color: #333;
+}
+
+input:focus {
+    border-color: #D4AF37;
+    outline: none;
+    box-shadow: 0 0 8px rgba(212, 175, 55, 0.5);
+}
+
+/* Bouton d'inscription et de connexion */
+.btn-register, .btn-primary {
+    background: linear-gradient(to right, #D4AF37, #B88E6E);
+    color: white;
+    font-size: 18px;
+    font-weight: bold;
+    padding: 12px;
+    border: none;
+    border-radius: 30px;
+    cursor: pointer;
+    transition: 0.3s ease-in-out;
+    width: 100%;
+}
+
+.btn-register:hover, .btn-primary:hover {
+    background: linear-gradient(to right, #B88E6E, #D4AF37);
+    transform: scale(1.05);
+}
+
+/* Cartes de tournois */
 .tournament-card {
     background: white;
     padding: 20px;
@@ -42,21 +219,6 @@ h2 {
     transform: translateY(-5px);
 }
 
-/* ----- Titres des tournois ----- */
-.tournament-card h3 {
-    font-size: 1.8em;
-    color: #3E4A64;
-    margin-bottom: 10px;
-}
-
-/* ----- Description des tournois ----- */
-.tournament-card p {
-    font-size: 1.2em;
-    color: #6C6C6C;
-    margin-bottom: 10px;
-}
-
-/* ----- Statut des tournois ----- */
 .status {
     font-size: 1.1em;
     font-weight: bold;
@@ -65,7 +227,6 @@ h2 {
     display: inline-block;
 }
 
-/* Statuts dynamiques */
 .status.open {
     background-color: #28A745;
     color: white;
@@ -81,14 +242,32 @@ h2 {
     color: black;
 }
 
-/* ----- Responsive Design ----- */
+/* Responsive Design */
 @media (max-width: 768px) {
-    .container {
+    .landing, .login-container, .register-container, .container {
         width: 90%;
+        padding: 20px;
+    }
+
+    h1.title {
+        font-size: 3em;
     }
 
     h2 {
         font-size: 2em;
+    }
+
+    .cta-buttons {
+        flex-direction: column;
+        align-items: center;
+    }
+
+    .register-container, .login-container {
+        width: 90%;
+    }
+
+    .intro-text, .cta-text {
+        font-size: 1.1em;
     }
 
     .tournament-card {
@@ -102,4 +281,29 @@ h2 {
     .tournament-card p {
         font-size: 1em;
     }
+
+    form {
+        margin-bottom: 20px;
+    }
+    
+    form select, form button {
+        padding: 8px;
+        margin-left: 10px;
+        border: 1px solid #ccc;
+        border-radius: 4px;
+    }
+    
+    .tournament-card {
+        border: 1px solid #ccc;
+        padding: 20px;
+        margin-bottom: 15px;
+        border-radius: 5px;
+        background-color: #f9f9f9;
+    }
+
+    .status {
+        font-weight: bold;
+        color: #333;
+    }
+    
 }

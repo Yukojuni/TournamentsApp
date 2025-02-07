@@ -37,7 +37,7 @@ class DashboardController extends AbstractDashboardController
     {
         // Vérifie si l'utilisateur est admin
         if (!$this->security->isGranted('ROLE_ADMIN')) {
-            return $this->redirectToRoute('app_home');
+            return $this->redirectToRoute('app_tournaments');
         }
 
         $url = $this->adminUrlGenerator->setController(UserCrudController::class)->generateUrl();
@@ -60,7 +60,7 @@ class DashboardController extends AbstractDashboardController
             MenuItem::linkToCrud('Équipes', 'fas fa-users-cog', Teams::class)->setController(TeamsCrudController::class),
             MenuItem::linkToCrud('Matchs', 'fas fa-futbol', Matches::class)->setController(MatchesCrudController::class),
             MenuItem::section('Autres'),
-            MenuItem::linkToRoute('Retour au site', 'fas fa-arrow-left', 'main'),
+            MenuItem::linkToRoute('Retour au site', 'fas fa-arrow-left', 'app_tournaments'),
             MenuItem::linkToLogout('Déconnexion', 'fas fa-sign-out-alt'),
         ];
     }

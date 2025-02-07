@@ -1,16 +1,37 @@
 {% extends 'base.html.twig' %}
 
+{% block title %}Tournois - Miss France{% endblock %}
+
 {% block body %}
 <div class="container">
     <h2>Liste des Tournois</h2>
-    {% for tournament in tournaments %}
-        <div class="tournament-card">
-            <h3>{{ tournament.name }}</h3>
-            <p>{{ tournament.description }}</p>
-            <p class="status {% if tournament.status == 'Ouvert' %}open{% elseif tournament.status == 'Fermé' %}closed{% else %}ongoing{% endif %}">
-                Statut : {{ tournament.status }}
-            </p>
-        </div>
-    {% endfor %}
+
+    <!-- Formulaire de filtre par statut -->
+    <form method="get" action="{{ path('app_tournaments') }}">
+        <label for="status">Filtrer par statut :</label>
+        <select name="status" id="status">
+            <option value="">--Tous--</option>
+            <option value="à venir" {% if filterStatus == 'A venir' %}selected{% endif %}>A venir</option>
+            <option value="en cours" {% if filterStatus == 'En cours' %}selected{% endif %}>En cours</option>
+            <option value="passé" {% if filterStatus == 'Passé' %}selected{% endif %}>Passé</option>
+        </select>
+        <button type="submit">Filtrer</button>
+    </form>
+
+    <h3>Liste des tournois</h3>
+    {% if tournaments is empty %}
+        <p>Aucun tournoi trouvé pour ce statut.</p>
+    {% else %}
+        {% for tournament in tournaments %}
+            <div class="tournament-card">
+                <h3>{{ tournament.name }}</h3>
+                <p>{{ tournament.description }}</p>
+                <p class="status">
+                    Statut : {{ tournament.status }}
+                </p>
+                <a href="{{ path('app_tournament_details', { id: tournament.id }) }}" class="btn">Voir les détails</a>
+            </div>
+        {% endfor %}
+    {% endif %}
 </div>
 {% endblock %}

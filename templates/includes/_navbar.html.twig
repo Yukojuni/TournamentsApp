@@ -1,0 +1,23 @@
+<nav class="navbar">
+    <div class="container">
+        <a href="{{ path('app_main') }}" class="logo">🏆 Miss tournoi</a>
+
+        <ul class="nav-links">
+            <li><a href="{{ path('app_tournaments') }}">Tournois</a></li>
+
+            {% if is_granted('IS_AUTHENTICATED_FULLY') %}
+                <li><a href="{{ path('app_tournaments') }}">Mon Profil</a></li>
+                <li><a href="{{ path('app_tournaments') }}">Équipes</a></li>
+
+                {% if is_granted('ROLE_ADMIN') %}
+                    <li><a href="{{ path('admin') }}">Admin</a></li>
+                {% endif %}
+
+                <li><a href="{{ path('app_logout') }}" class="btn-logout">Déconnexion</a></li>
+            {% else %}
+                <li><a href="{{ path('app_login') }}">Connexion</a></li>
+                <li><a href="{{ path('app_register') }}">Inscription</a></li>
+            {% endif %}
+        </ul>
+    </div>
+</nav>

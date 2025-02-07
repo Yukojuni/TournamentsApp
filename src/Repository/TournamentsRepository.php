@@ -5,6 +5,7 @@ namespace App\Repository;
 use App\Entity\Tournaments;
 use Doctrine\Bundle\DoctrineBundle\Repository\ServiceEntityRepository;
 use Doctrine\Persistence\ManagerRegistry;
+use App\Repository\TournamentRepository;
 
 /**
  * @extends ServiceEntityRepository<Tournaments>
@@ -31,13 +32,17 @@ class TournamentsRepository extends ServiceEntityRepository
     //        ;
     //    }
 
-    //    public function findOneBySomeField($value): ?Tournaments
-    //    {
-    //        return $this->createQueryBuilder('t')
-    //            ->andWhere('t.exampleField = :val')
-    //            ->setParameter('val', $value)
-    //            ->getQuery()
-    //            ->getOneOrNullResult()
-    //        ;
-    //    }
+    public function findOneBySomeField(): array
+    {
+        $now = new \DateTime();
+
+        return $this->createQueryBuilder('t')
+            ->addSelect('CASE 
+                WHEN t.startDate > :now THEN \'A venir\' 
+                WHEN t.startDate <= :now AND t.endDate >= :now THEN \'En cours\' 
+                ELSE \'Passé\' END AS HIDDEN status')
+            ->setParameter('now', $now)
+            ->getQuery()
+            ->getResult();
+    }
 }
